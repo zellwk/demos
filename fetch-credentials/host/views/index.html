@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Host</title>
+
+    <style>
+      h1,
+      a,
+      iframe,
+      button {
+        display: block;
+      }
+      * + * {
+        margin-top: 1em;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Main Site</h1>
+    <a href="/set-cookies">Set own cookies</a>
+    <iframe src="http://subdomain.lvh.me:4000/set-cookies"></iframe>
+    <iframe src="https://192.0.2.2/set-cookies"></iframe>
+
+    <button id="own-server">Send cookies to own server</button>
+    <button id="subdomain-server">Send cookies to subdomain server</button>
+    <button id="external-server">Send cookies to external site</button>
+
+    <script>
+      const ownServerButton = document.querySelector("#own-server");
+      const subdomainServerButton = document.querySelector("#subdomain-server");
+      const externalServerButton = document.querySelector("#external-server");
+
+      ownServerButton.addEventListener("click", () => {
+        fetch("/log", {
+          method: "POST",
+          credentials: "include",
+        })
+          .then(console.log)
+          .catch(console.log);
+      });
+
+      subdomainServerButton.addEventListener("click", () => {
+        fetch("http://subdomain.lvh.me:4000/log", {
+          method: "POST",
+          credentials: "include",
+        })
+          .then(console.log)
+          .catch(console.log);
+      });
+
+      externalServerButton.addEventListener("click", () => {
+        fetch("https://192.0.2.2/log", {
+          method: "POST",
+          credentials: "include",
+        })
+          .then(console.log)
+          .catch(console.log);
+      });
+    </script>
+  </body>
+</html>

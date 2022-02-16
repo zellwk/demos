@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>External Website</title>
+
+    <style>
+      h1,
+      a,
+      iframe,
+      button {
+        display: block;
+      }
+      * + * {
+        margin-top: 1em;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>External Website</h1>
+
+    <p>
+      Main point of this is to test whether Fetch with `credentials` sents
+      cookies from one domain to another and vice versa.
+    </p>
+
+    <a href="/set-cookies">Set own cookies</a>
+    <iframe src="http://localhost:3000/set-cookies"></iframe>
+
+    <button id="own-server">Send cookies to own server</button>
+    <button id="host-server">Send cookies to host's server</button>
+
+    <script>
+      const ownServerButton = document.querySelector("#own-server");
+      ownServerButton.addEventListener("click", (event) => {
+        fetch("/log", {
+          method: "post",
+          credentials: "include",
+        })
+          .then(console.log)
+          .catch(console.log);
+      });
+
+      const hostServerButton = document.querySelector("#host-server");
+      hostServerButton.addEventListener("click", (event) => {
+        fetch("http://localhost:3000/log", {
+          method: "post",
+          credentials: "include",
+          headers: {
+            Authorization: "Basic testing",
+          },
+        })
+          .then(console.log)
+          .catch(console.log);
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Subdomain</title>
+
+    <style>
+      h1,
+      a,
+      iframe,
+      button {
+        display: block;
+      }
+      * + * {
+        margin-top: 1em;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Subdomain</h1>
+
+    <p>
+      Main point of this is to test whether Fetch with `credentials` sents
+      cookies from domain to subdomain and vice versa.
+    </p>
+
+    <a href="/set-cookies">Set own cookies</a>
+    <iframe src="http://lvh.me:3000/set-cookies"></iframe>
+
+    <button id="own-server">Send cookies to own server</button>
+    <button id="domain-server">Send cookies to domain's server</button>
+
+    <script>
+      const ownServerButton = document.querySelector("#own-server");
+      ownServerButton.addEventListener("click", (event) => {
+        fetch("/log", {
+          method: "post",
+          credentials: "include",
+        })
+          .then(console.log)
+          .catch(console.log);
+      });
+
+      const domainServerButton = document.querySelector("#domain-server");
+      domainServerButton.addEventListener("click", (event) => {
+        fetch("http://lvh.me:3000/log", {
+          method: "post",
+          credentials: "include",
+        })
+          .then(console.log)
+          .catch(console.log);
+      });
+    </script>
+  </body>
+</html>
