@@ -9,13 +9,7 @@ const __dirname = dirname(import.meta.url)
 app.use(express.static('public'))
 app.use(cookieParser())
 
-// CORS
-app.use((req, res, next) => {
-  // res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000')
-  // res.setHeader('Access-Control-Allow-Methods', 'GET, POST')
-  // res.setHeader('Access-Control-Allow-Credentials', true)
-  next()
-})
+// No CORS required to send credentials across subdomains
 
 app.get('/', (req, res) => {
   res.sendFile(path.resolve(__dirname, 'views', 'index.html'))
