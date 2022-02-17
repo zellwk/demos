@@ -21,27 +21,6 @@
   <body>
     <h1>Frontend</h1>
 
-    <p>
-      This demonstrates that Fetch does not need to set the
-      <code>credentials</code> property in order to send Authorization headers.
-    </p>
-
-    <p>
-      Please run both servers at the same time. The server will log a the
-      Authorization header when you press each of these buttons.
-    </p>
-
-    <p>
-      Note that <code>credentials</code> are set to
-      <code>omit</code> deliberately to demonstrate this fact.
-    </p>
-
-    <p>
-      Also note that <code>Access-Control-Allow-Credentials</code> is not
-      required on the external server for Fetch to Authorization headers across.
-      It needs <code>Access-Control-Allow-Headers</code> instead.
-    </p>
-
     <button id="own-server">Send Fetch request to own server</button>
     <button id="domain-server">Send Fetch request to external server</button>
 
