@@ -32,7 +32,7 @@
       domainServerButton.addEventListener("click", (event) => {
         fetch("http://lvh.me:3000/log", {
           method: "post",
-          credentials: "include",
+          credentials: "omit",
         })
           .then(console.log)
           .catch(console.log);
