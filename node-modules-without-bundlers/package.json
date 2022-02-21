@@ -1,0 +1,17 @@
+{
+  "name": "modules-without-bundlers",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "server": "node server.js"
+  },
+  "author": "Zell Liew <zellwk@gmail.com> (https://zellwk.com/)",
+  "license": "MIT",
+  "dependencies": {
+    "@zellwk/javascript": "^2.1.2",
+    "express": "^4.17.3",
+    "zl-fetch": "^3.4.0"
+  }
+}
