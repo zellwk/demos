@@ -1,0 +1,16 @@
+{
+  "name": "node-https",
+  "type": "module",
+  "dependencies": {
+    "express": "^4.17.3"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "version": "1.0.0",
+  "main": "server.js",
+  "devDependencies": {},
+  "author": "Zell Liew <zellwk@gmail.com> (https://zellwk.com/)",
+  "license": "MIT",
+  "description": ""
+}
