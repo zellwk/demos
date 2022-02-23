@@ -1,5 +1,5 @@
 import express from 'express'
-import fs from 'fs/promises'
+import fs from 'fs'
 import https from 'https'
 import { fileURLToPath } from 'url'
 import path from 'path'
@@ -15,8 +15,8 @@ app.get('/', (req, res) => {
 // Listen with SSL
 const server = https.createServer(
   {
-    key: await fs.readFile(`${__dirname}/certs/key.pem`, 'utf8'),
-    cert: await fs.readFile(`${__dirname}/certs/cert.pem`, 'utf8')
+    key: fs.readFileSync(`${__dirname}/certs/key.pem`, 'utf8'),
+    cert: fs.readFileSync(`${__dirname}/certs/cert.pem`, 'utf8')
   },
   app
 )
